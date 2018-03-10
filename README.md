@@ -1,22 +1,2 @@
-# Repozytorium do zajęć WI ZUT
-
-Obiad:
-* ziemniaki
-* schabowe
-* mizeria
-
-## Rozdział
-
-```
-int obiad = 1;
-int zjedz_obiad(int obiad)
-{
-	return obiad = 0;
-}
-```
-
-| tak | nie |
-| ------ | ------ |
-| 1 | 1 |
-| 2 | 2 |
-| 3 | 3 |
+# remote_light
+Repozytorium dla projektu sw semestr2 - Zdalne sterowanie oświetleniem w domu
