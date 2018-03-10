@@ -1,0 +1,5 @@
+wymagania funkcjonalne
+wymagania niefunkcjonalne
+diagram sekwencji (później)
+diagram przypadkow (opcjonalnie)
+
