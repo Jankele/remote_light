@@ -39,5 +39,5 @@
 
 ## Schemat projektu
 
-### Prototyp v0.1 - szkic niesprawdzony
+### Prototyp v0.1 - poprawność nieprzetestowana
 ![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/proj_bb.png?raw=true)
