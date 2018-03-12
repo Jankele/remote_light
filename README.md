@@ -17,8 +17,10 @@
 * Płytka prototypowa lub układ scalony łącząca wszystkie moduły
 * Środowisko do tworzenia oraz przekazania kodu dla Arduino (Ubuntu i pochodne, Windows)
 
+
+
 | Komponent | Ilość |
-| --- | --- |
+| :--- | :---: |
 | Arduino | 1 |
 | Moduł Bluetooth | 1 |
 | Płytka stykowa 830 | 1 |
