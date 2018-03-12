@@ -18,10 +18,8 @@
 * Środowisko do tworzenia oraz przekazania kodu dla Arduino (Ubuntu i pochodne, Windows)
 * Spis potrzebnych komponentów:
 
-<center>
-
-| Komponent | Ilość |
-| :--- | :---: |
+  | Komponent | Ilość |
+  | :--- | :---: |
 | Arduino | 1 |
 | Moduł Bluetooth | 1 |
 | Płytka stykowa 830 | 1 |
@@ -34,8 +32,6 @@
 | Fotodioda | 1 |
 | Opcjonalnie: |  |
 | Cyfrowy czujnik dźwięku | 1 |
-
-</center>
 
 ## Schemat projektu
 
