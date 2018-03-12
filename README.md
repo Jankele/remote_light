@@ -18,8 +18,8 @@
 * Środowisko do tworzenia oraz przekazania kodu dla Arduino (Ubuntu i pochodne, Windows)
 * Spis potrzebnych komponentów:
 
-  | Komponent | Ilość |
-  | :--- | :---: |
+| Komponent | Ilość |
+| :--- | :---: |
 | Arduino | 1 |
 | Moduł Bluetooth | 1 |
 | Płytka stykowa 830 | 1 |
@@ -36,3 +36,4 @@
 ## Schemat projektu
 
 ### Prototyp v0.1 - szkic niesprawdzony
+![schemat projektu Fritzing](?raw=true)
