@@ -31,9 +31,7 @@
 | Opornik 10kΩ | 2 |
 | Czujka PIR | 1 |
 | Fotodioda | 1 |
-
-opcjonalnie:
-
+| Opcjonalnie: |  |
 | Cyfrowy czujnik dźwięku | 1 |
 
 ## Schemat projektu
