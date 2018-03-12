@@ -16,23 +16,22 @@
 * Czujnik dźwięku (opcjonalnie)
 * Płytka prototypowa lub układ scalony łącząca wszystkie moduły
 * Środowisko do tworzenia oraz przekazania kodu dla Arduino (Ubuntu i pochodne, Windows)
+* Spis potrzebnych komponentów:
 
-
-
-| Komponent | Ilość |
-| :--- | :---: |
-| Arduino | 1 |
-| Moduł Bluetooth | 1 |
-| Płytka stykowa 830 | 1 |
-| Dioda LED | 3 |
-| Opornik 220Ω | 3 |
-| Opornik 1kΩ | 1 |
-| Opornik 2kΩ | 1 |
-| Opornik 10kΩ | 2 |
-| Czujka PIR | 1 |
-| Fotodioda | 1 |
-| Opcjonalnie: |  |
-| Cyfrowy czujnik dźwięku | 1 |
+      | Komponent | Ilość |
+      | :--- | :---: |
+      | Arduino | 1 |
+      | Moduł Bluetooth | 1 |
+      | Płytka stykowa 830 | 1 |
+      | Dioda LED | 3 |
+      | Opornik 220Ω | 3 |
+      | Opornik 1kΩ | 1 |
+      | Opornik 2kΩ | 1 |
+      | Opornik 10kΩ | 2 |
+      | Czujka PIR | 1 |
+      | Fotodioda | 1 |
+      | Opcjonalnie: |  |
+      | Cyfrowy czujnik dźwięku | 1 |
 
 ## Schemat projektu
 
