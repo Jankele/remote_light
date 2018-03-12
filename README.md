@@ -1,5 +1,7 @@
 # System do inteligentnego sterowania oświetleniem w domu
 
+
+
 ## Wymagania projektowe
 
 ### Wymagania funkcjonalne:
@@ -32,6 +34,8 @@
 | Fotodioda | 1 |
 | Opcjonalnie: |  |
 | Cyfrowy czujnik dźwięku | 1 |
+
+
 
 ## Schemat projektu
 
