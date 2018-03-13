@@ -17,7 +17,7 @@
 * Diody led (symulacja oświetlenia w domu)
 * Czujnik dźwięku (opcjonalnie)
 * Płytka prototypowa lub układ scalony łącząca wszystkie moduły
-* Środowisko do tworzenia oraz przekazania kodu dla Arduino (Ubuntu i pochodne, Windows)
+* Arduino IDE lub inne środowisko kompatybilne z systemami operacyjnymi Windows lub Linux
 * Spis potrzebnych komponentów:
 
 | Komponent | Ilość |
