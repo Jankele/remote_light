@@ -16,7 +16,7 @@
 * Czujnik światła
 * Diody led (symulacja oświetlenia w domu)
 * Czujnik dźwięku (opcjonalnie)
-* Płytka prototypowa lub układ scalony łącząca wszystkie moduły
+* Płytka prototypowa lub drukowana łącząca wszystkie moduły
 * Arduino IDE lub inne środowisko kompatybilne z systemami operacyjnymi Windows lub Linux
 * Spis potrzebnych komponentów:
 
