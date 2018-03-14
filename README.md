@@ -32,7 +32,8 @@
 | Opornik 10kΩ | 2 |
 | Czujka PIR | 1 |
 | Fotorezystor | 1 |
-| Opcjonalnie: |  |
+| ------ |
+| Opcjonalnie: |
 | Cyfrowy czujnik dźwięku | 1 |
 
 
