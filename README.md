@@ -38,6 +38,6 @@
 
 
 ## Schemat projektu
-
+https://github.com/Jankele/remote_light/blob/master/README.md
 ### Prototype v0.1 - unstable
-![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/proj_bb.png?raw=true)
+![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/schemat.png?raw=true)
