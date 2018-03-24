@@ -20,20 +20,20 @@
 * Arduino IDE lub inne środowisko kompatybilne z systemami operacyjnymi Windows lub Linux
 * Spis potrzebnych komponentów:
 
-| Komponent | Ilość |
-| :--- | :---: |
-| Arduino | 1 |
-| Moduł Bluetooth | 1 |
+| Komponent | Ilość | PIN |
+| :--- | :---: | :--- |
+| Arduino | 1 | 
+| Moduł Bluetooth | 1 | Digital |
 | Płytka stykowa 830 | 1 |
-| Dioda LED | 3 |
+| Dioda LED | 3 | Digital |
 | Opornik 220Ω | 3 |
 | Opornik 1kΩ | 1 |
 | Opornik 2kΩ | 1 |
 | Opornik 10kΩ | 2 |
-| Czujka PIR | 1 |
-| Fotorezystor | 1 |
+| Czujka PIR | 1 | Digital |
+| Fotorezystor | 1 | Analog |
 | Opcjonalnie: |
-| Czujnik dźwięku | 1 |
+| Czujnik dźwięku | 1 | Analog |
 
 
 
