@@ -38,6 +38,9 @@
 
 
 ## Schemat projektu
+https://github.com/Jankele/remote_light/blob/master/README.md
+### Prototype v0.2 - LED working
+![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/schemat.png?raw=true)
 
-### Prototype v0.1 - unstable
-![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/proj_bb.png?raw=true)
+Log:
+Sprawdzone działanie diód - Projekt z Arduino IDE
