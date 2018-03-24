@@ -33,7 +33,7 @@
 | Czujka PIR | 1 |
 | Fotorezystor | 1 |
 | Opcjonalnie: |
-| Cyfrowy czujnik dźwięku | 1 |
+| Czujnik dźwięku | 1 |
 
 
 
