@@ -14,6 +14,7 @@
 * Arduino
 * Moduł do komunikacji bezprzewodowej Bluetooth
 * Czujnik światła
+* Czujnik ruchu PIR (Domyślnie na wyjściu LOW, zmiana na HIGH podczas wykrycia ruchu)
 * Diody led (symulacja oświetlenia w domu)
 * Czujnik dźwięku (opcjonalnie)
 * Płytka prototypowa lub drukowana łącząca wszystkie moduły
@@ -29,7 +30,7 @@
 | Opornik 220Ω | 3 |
 | Opornik 1kΩ | 1 |
 | Opornik 2kΩ | 1 |
-| Opornik 10kΩ | 2 |
+| Opornik 10kΩ | 1 |
 | Czujka PIR | 1 | Digital |
 | Fotorezystor | 1 | Analog |
 | Opcjonalnie: |
@@ -39,8 +40,7 @@
 
 ## Schemat projektu
 https://github.com/Jankele/remote_light/blob/master/README.md
-### Prototype v0.2 - LED working
+### Prototype v0.3 - PIR working
 ![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/schemat.png?raw=true)
 
-Log:
-Sprawdzone działanie diód - Projekt z Arduino IDE
+Dziennik zmian w /info/LOG.txt.
