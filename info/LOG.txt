@@ -3,3 +3,6 @@
 25.03.18 - Sprawdzone działanie czujki PIR (kod źródłowy wrzucony do src).
 
 25.03.18 - Zmiana schematu (Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje an 5V, dlatego ze schematu usunąłem rezystor).
+
+26.03.18 - Dodany kod fotorezystora - DO PRZETESTOWANIA NA SPRZĘCIE
+	   Dodany kod Bluetooth - TODO (APKA NA TELEFON, PRZETESTOWANIE PORTU SZEREGOWEGO)
