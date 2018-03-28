@@ -6,3 +6,7 @@
 
 26.03.18 - Dodany kod fotorezystora - DO PRZETESTOWANIA NA SPRZĘCIE
 	   Dodany kod Bluetooth - TODO (APKA NA TELEFON, PRZETESTOWANIE PORTU SZEREGOWEGO)
+
+28.03.18 - Kod fotorezystora	- OK
+	   Kod Czujki PIR 	- OK
+	   Kod Bluetooth	- Działa na konsoli
