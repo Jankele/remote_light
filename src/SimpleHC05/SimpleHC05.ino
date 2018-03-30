@@ -14,13 +14,13 @@ void setup() {
   while(!Serial){}
   delay(100);
   Serial.println("Start");
+      Serial.println("a = LED1 ON, b = LED1 OFF");
+    Serial.println("c = LED2 ON, d = LED2 OFF");
+    Serial.println("e = LED3 ON, f = LED3 OFF");
 }
 
 void loop() {
   delay(50);
-    Serial.println("a = LED1 ON, b = LED1 OFF");
-    Serial.println("c = LED2 ON, d = LED2 OFF");
-    Serial.println("e = LED3 ON, f = LED3 OFF");
     Serial.println("Podaj litere");
     while(znak == (char)0)
     {

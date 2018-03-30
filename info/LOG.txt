@@ -2,7 +2,7 @@
 
 25.03.18 - Sprawdzone działanie czujki PIR (kod źródłowy wrzucony do src).
 
-25.03.18 - Zmiana schematu (Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje an 5V, dlatego ze schematu usunąłem rezystor).
+25.03.18 - Zmiana schematu (Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje na 5V, dlatego ze schematu usunąłem rezystor).
 
 26.03.18 - Dodany kod fotorezystora - DO PRZETESTOWANIA NA SPRZĘCIE
 	   Dodany kod Bluetooth - TODO (APKA NA TELEFON, PRZETESTOWANIE PORTU SZEREGOWEGO)
@@ -10,3 +10,7 @@
 28.03.18 - Kod fotorezystora	- OK
 	   Kod Czujki PIR 	- OK
 	   Kod Bluetooth	- Działa na konsoli
+
+30.03.18 - Wszystkie podzespoły działają poprawnie
+	   Parowanie tabletu(android) z modułem bluetooth(hc-05) działa poprawnie
+	   Za pomocą aplikacji ze sklepu Android(unWired Lite) która symuluje konsolę, wysyłam przez port szeregowy RX komendy sterujące diodami
