@@ -1,10 +1,16 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 Kod fotorezystora	- OK
 Kod Czujki PIR 		- OK
-Kod Bluetooth		- OK
+Kod Bluetooth		  - OK
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Kod Arduino pisany jest w C++.	   
 Aplikacja sterująca przez bluetooth napisana jest w Javie (Android Studio).
 Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje na 5V.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 TODO:
 - Kody działają już osobno, trzeba złożyć pojedyncze programy w projekt Arduino
@@ -14,3 +20,11 @@ TODO:
 - Napisać diagram sekwencji
 - Napisać diagram przypadków
 - Stworzyć prezentację projektu
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Mój projekt sprawdza - Łukasz Słodkowski	
+Ja sprawdzam projekt - Konrada Urbańskiego
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
