@@ -11,3 +11,6 @@ TODO:
 - Napisać plik nagłówkowy
 - Przerobić front-end aplikacji na Androida
 - Dodać obsługę reszty diód do plikacji na Androida
+- Napisać diagram sekwencji
+- Napisać diagram przypadków
+- Stworzyć prezentację projektu
