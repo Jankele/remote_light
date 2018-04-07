@@ -7,7 +7,7 @@ Kod Bluetooth		  - OK
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Kod Arduino pisany jest w C++.	   
-Aplikacja sterująca przez bluetooth napisana jest w Javie (Android Studio).
+Aplikacja sterująca przez bluetooth pisana jest w Javie (Android Studio).
 Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje na 5V.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -15,8 +15,7 @@ Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje t
 TODO:
 - Kody działają już osobno, trzeba złożyć pojedyncze programy w projekt Arduino
 - Napisać plik nagłówkowy
-- Przerobić front-end aplikacji na Androida
-- Dodać obsługę reszty diód do plikacji na Androida
+- Dokończyć aplikację na Androida
 - Napisać diagram sekwencji
 - Napisać diagram przypadków
 - Stworzyć prezentację projektu
