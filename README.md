@@ -42,5 +42,3 @@
 
 ### Prototyp v1.0
 ![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/schemat.png?raw=true)
-
-Dziennik zmian w /info/LOG.txt.
