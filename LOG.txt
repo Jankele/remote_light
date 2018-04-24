@@ -33,11 +33,11 @@ Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje t
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 TODO:
-- Napisać kod Arduino, obiektowo wg zasad i zależności między modułami. Kody obsługi samych modułów są już gotowe
-- Napisać aplikację na Androida
+- Napisać diagram aktywności
 - Napisać diagram sekwencji
 - Napisać diagram przypadków
-- Napisać diagram aktywności
+- Napisać kod Arduino, obiektowo wg zasad i zależności między modułami. Kody obsługi samych modułów są już gotowe
+- Napisać aplikację na Androida
 - Stworzyć prezentację projektu
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
