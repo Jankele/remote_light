@@ -10,36 +10,24 @@ bool state = false;
 boolean isBright()
 {
   if(analogRead(PR) > POZIOM) //LDR < 300
-  {
     return true;
-  }
   else
-  {
     return false;
-  }  
 }
 
 void ledOn(uint8_t Led)
 {
   digitalWrite(Led, HIGH);
-  Serial.print("Wlaczam LED nr ");
-  Serial.println(Led);
 }
 
 void ledOff(uint8_t Led)
 {
   digitalWrite(Led, LOW);
-  Serial.print("Wylaczam LED nr ");
-  Serial.println(Led);
 }
 void initiateConsole()
 {
   Serial.begin(BAUD);
   while(! Serial); //Czekanie na konsole
-  if(Serial.available())
-  {
-    Serial.println("Start");
-  }
 }
 
 void setup()
@@ -69,18 +57,4 @@ void loop()
       state = true;
     }
   }
-  
-  /*if(state!=isBright())
-  {
-    if(state==false)
-    {
-      ledOff(LED1);
-      state=true;
-    }
-    else 
-    {
-      ledOn(LED1);
-      state=false;
-    }
-  }*/
 }
