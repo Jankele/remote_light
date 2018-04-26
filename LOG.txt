@@ -20,8 +20,7 @@ INTERAKCJA MODUŁU BLUETOOTH Z RESZTĄ MODUŁÓW:
       czujka PIR może odzyskać kontrolę nad diodą i zmienić czas włączenia na swój własny.
       
 2.    Kiedy dioda LED2 jest włączona
-        a)  aplikacja na telefon może ją wyłączyć na X czasu.
-        b)  aplikacja na telefon może ją wyłączyć na cały okres wykrycia niskiego natężenia światła.
+      Aplikacja na telefon może ją wyłączyć na X czasu.
       Kiedy dioda LED2 jest wyłączona, aplikacja na telefon może ją włączyć na X czasu.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
