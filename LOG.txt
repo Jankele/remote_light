@@ -15,7 +15,7 @@ Aplikacja na Androida obsługuje wszystkie diody przez Bluetooth
 
 
 INTERAKCJA MODUŁU BLUETOOTH Z RESZTĄ MODUŁÓW:
-1.    Mogę włączyć oraz wyłączyć na X czasu diodę LED1 za pomocą aplikacji na telefon.
+1.    Mogę włączyć oraz wyłączyć diodę LED1 za pomocą aplikacji na telefon.
       Podczas gdy dioda jest włączona za pomocą aplikacji na czas przez aplikację wyznaczony,
       czujka PIR może odzyskać kontrolę nad diodą i zmienić czas włączenia na swój własny.
       
