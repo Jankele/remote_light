@@ -1,21 +1,6 @@
 char znak;
 
-#define LED1 2
-#define LED2 3
-#define LED3 4
-#define BAUD 9600
-
-void setup()
-{
-    pinMode(LED1, OUTPUT);
-    pinMode(LED2, OUTPUT);
-    pinMode(LED3, OUTPUT);
-    Serial.begin(BAUD);
-    while(!Serial){}
-    delay(50);
-}
-
-void loop()
+void loopBLE()
 {
     znak = (char)0;
 
