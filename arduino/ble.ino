@@ -23,7 +23,11 @@ void loopBLE()
       case 'b':
       {
         if(digitalRead(LED1) == HIGH)
-          digitalWrite(LED1, LOW);
+          digitalWrite(LED1, LOW);void initiateConsole()
+{
+  Serial.begin(BAUD);
+  while(! Serial); //Czekanie na konsole
+}
 
       } 
       break;
