@@ -1,4 +1,14 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+TODO:
+- Napisać diagram aktywności
+- Napisać diagram sekwencji
+- Napisać diagram przypadków
+- Napisać kod Arduino, obiektowo wg zasad i zależności między modułami. Kody obsługi samych modułów są już gotowe
+- Napisać aplikację na Androida
+- Stworzyć prezentację projektu
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ROZWIĄZANIE PROBLEMU:
 
 Czujka PIR obsługuje kontrolę diody LED1
@@ -28,21 +38,5 @@ INTERAKCJA MODUŁU BLUETOOTH Z RESZTĄ MODUŁÓW:
 Kod Arduino pisany jest w C++.	   
 Aplikacja sterująca przez bluetooth pisana jest w Javie (Android Studio).
 Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje na 5V.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-TODO:
-- Napisać diagram aktywności
-- Napisać diagram sekwencji
-- Napisać diagram przypadków
-- Napisać kod Arduino, obiektowo wg zasad i zależności między modułami. Kody obsługi samych modułów są już gotowe
-- Napisać aplikację na Androida
-- Stworzyć prezentację projektu
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Mój projekt sprawdza - Łukasz Słodkowski	
-Ja sprawdzam projekt - Konrada Urbańskiego
-
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
