@@ -1,0 +1,21 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+TODO:
+
+- Stworzyc scenariusze/pokoje sterowane apka na androida w ktorych konfiguruje rozne polaczenia np. ble + pir, pr+pir itp., razem jest 7 polaczen
+- Sterowanie caloscia projektu z poziomu apki andriod
+- stworzyc plik konfiguracyjny i wczytywac konfiguracje apka
+- konflikty miedzy modulami moge rozwiazac obojetnie jak
+
+- Napisać diagram aktywności
+- Napisać diagram sekwencji
+- Napisać diagram przypadków
+- Napisać kod Arduino, obiektowo wg zasad i zależności między modułami. Kody obsługi samych modułów są już gotowe
+- Napisać aplikację na Androida
+- Stworzyć prezentację projektu
+
+Kod Arduino pisany jest w C++.	   
+Aplikacja sterująca przez bluetooth pisana jest w Javie (Android Studio).
+Czujka PIR którą kupiłem na wyjściu ma stan LOW, zmiana na HIGH następuje tylko podczas wykrycia ruchu; Czujka pracuje na 5V.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++

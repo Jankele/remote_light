@@ -1,0 +1,67 @@
+--------------
+I. PR
+  Fotorezystor (PR) obsługuje kontrolę diody PR
+    Dioda jest włączona póki jest ciemno
+    Dioda jest wyłączona dopóki jest jasno
+--------------
+II. PIR
+  Czujka ruchu(PIR) obsługuje kontrolę diody PIR
+    Dioda włącza się na X czasu po wykryciu ruchu
+    Dioda wyłącza się po X czasu od zapalenia
+--------------
+III. BLE
+  Aplikacja na Androida(BLE) obsługuje wszystkie diody przez Bluetooth
+    Dioda jest włączona po nacisnięciu odpowiadającego jej przycisku
+    Dioda jest wyłączona po nacisnięciu odpowiadającego jej przycisku
+--------------
+IV. PIR + PR
+  Czujka ruchu(PIR) obsługuje kontrolę diody PIR
+    Dioda włącza się na X czasu po wykryciu ruchu
+    Dioda wyłącza się po X czasu od zapalenia
+
+  Fotorezystor (PR) obsługuje kontrolę diody PR
+    Dioda jest włączona póki jest ciemno
+    Dioda jest wyłączona dopóki jest jasno
+--------------
+V. PR + BLE
+
+  Fotorezystor (PR) obsługuje kontrolę diody PR
+    Dioda jest włączona póki jest ciemno
+    Dioda jest wyłączona dopóki jest jasno
+
+  Kiedy dioda PR jest włączona
+    Aplikacja na telefon może ją wyłączyć na X czasu.
+  Kiedy dioda PR jest wyłączona
+    Aplikacja na telefon może ją włączyć na X czasu.
+--------------
+VI. PIR + BLE
+
+  Czujka ruchu(PIR) obsługuje kontrolę diody PIR
+    Dioda włącza się na X czasu po wykryciu ruchu
+    Dioda wyłącza się po X czasu od zapalenia
+
+  Kiedy dioda PIR jest włączona
+    Aplikacja na telefon może odświeżyć czas X przez który dioda PIR jest włączona.
+  Kiedy dioda PIR jest wyłączona
+    Aplikacja na telefon może ją włączyć na X czasu.
+--------------
+VII. PIR + PR + BLE
+
+  Czujka ruchu(PIR) obsługuje kontrolę diody PIR
+    Dioda włącza się na X czasu po wykryciu ruchu
+    Dioda wyłącza się po X czasu od zapalenia
+
+  Fotorezystor (PR) obsługuje kontrolę diody PR
+    Dioda jest włączona póki jest ciemno
+    Dioda jest wyłączona dopóki jest jasno
+
+  Kiedy dioda PIR jest włączona
+    Aplikacja na telefon może odświeżyć czas X przez który dioda PIR jest włączona.
+  Kiedy dioda PIR jest wyłączona
+    Aplikacja na telefon może ją włączyć na X czasu.
+        
+  Kiedy dioda PR jest włączona
+    Aplikacja na telefon może ją wyłączyć na X czasu.
+  Kiedy dioda PR jest wyłączona
+    Aplikacja na telefon może ją włączyć na X czasu.
+--------------
