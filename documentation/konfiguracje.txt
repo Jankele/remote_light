@@ -1,3 +1,4 @@
+KONFIGURACJE
 --------------
 I. PR
   Fotorezystor (PR) obsługuje kontrolę diody PR
