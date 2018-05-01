@@ -1,4 +1,4 @@
-KONFIGURACJE
+KONFIGURACJE MODUŁÓW
 --------------
 I. PR
   Fotorezystor (PR) obsługuje kontrolę diody PR
