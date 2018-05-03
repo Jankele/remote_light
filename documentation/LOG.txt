@@ -2,7 +2,7 @@
 
 TODO:
 
-- Stworzyc scenariusze/pokoje sterowane apka na androida w ktorych konfiguruje rozne polaczenia np. ble + pir, pr+pir itp., razem jest 7 polaczen
+- Zakodowac konfiguracje
 - Sterowanie caloscia projektu z poziomu apki andriod
 - stworzyc plik konfiguracyjny i wczytywac konfiguracje apka
 - konflikty miedzy modulami moge rozwiazac obojetnie jak
