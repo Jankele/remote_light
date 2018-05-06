@@ -1,13 +1,13 @@
 loopPIR()
 {
-    if(digitalRead(PIR) == HIGH)
+  static int licznik;
+  if(licznik = 0)
   {
-    ledOn(LED1);
-    ledOn(LED2);
-    ledOn(LED3);
-    delay(1000);
-    ledOff(LED1);
-    ledOff(LED2);
-    ledOff(LED3);
+      if(digitalRead(PIR) == HIGH)
+    {
+      ledOn(LED1);
+      //x czasu
+      ledOff(LED1);
+    }
   }
 }

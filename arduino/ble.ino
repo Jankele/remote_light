@@ -1,5 +1,12 @@
 char znak;
 
+void (softReset)
+{
+asm volatile ("  jmp 0");
+}
+
+
+
 void loopBLE()
 {
     znak = (char)0;
@@ -23,12 +30,7 @@ void loopBLE()
       case 'b':
       {
         if(digitalRead(LED1) == HIGH)
-          digitalWrite(LED1, LOW);void initiateConsole()
-{
-  Serial.begin(BAUD);
-  while(! Serial); //Czekanie na konsole
-}
-
+          digitalWrite(LED1, LOW);
       } 
       break;
       
@@ -59,6 +61,30 @@ void loopBLE()
         if(digitalRead(LED3) == HIGH)
           digitalWrite(LED3, LOW);
       } 
+      break;
+      case 'g':
+        softReset();
+      break;
+      case '1':
+        EEPROM.write(ADDRESS, 1);
+      break;
+      case '2':
+        EEPROM.write(ADDRESS, 2);
+      break;
+      case '3':
+        EEPROM.write(ADDRESS, 3);
+      break;
+      case '4':
+        EEPROM.write(ADDRESS, 4);
+      break;
+      case '5':
+        EEPROM.write(ADDRESS, 5);
+      break;
+      case '6':
+        EEPROM.write(ADDRESS, 6);
+      break;
+      case '7':
+        EEPROM.write(ADDRESS, 7);
       break;
     }
 }

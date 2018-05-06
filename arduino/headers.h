@@ -8,5 +8,6 @@
 #define PR A0
 #define PIR 8
 #define POZIOM 300
+#define ADDRESS 0
 
 #endif

@@ -1,5 +1,5 @@
 W aplikacji mobilnej tworzę nowy layout. Tam umieszczam 7 przycisków odpowiadających poniższym konfiguracjom. Każdy z przycisków wysyła znak do arduino tak samo jak podczas sterowania diodami. Każdy znak odpowiada innej konfiguracji.
-Arduino odbierając znak przez port szeregowy zapisuje go do pamieci EEPROM, wykonuje softreset programu; podczas wczytania sie szkicu od nowa wczytuje znak z pamieci EEPROM i uruchamia przypisaną mu konfigurację(trzeba dorobić default). Prawdopodobnie rozwiąże to w sposób taki iż nie zdefiniuje pinow(przez co modul nie bedzie uzywany przez arduino) i stworze kilka wersji kodu w if lub switch. Dzięki czemu Arduino będzie podczas startu uruchamiało daną konfigurację.
+Arduino odbierając znak przez port szeregowy zapisuje go do pamieci EEPROM, wykonuje softreset programu; podczas wczytania sie szkicu od nowa wczytuje znak z pamieci EEPROM i uruchamia przypisaną mu konfigurację(trzeba dorobić default). Prawdopodobnie rozwiąże to w sposób taki iż nie zadeklaruje pinow(przez co modul nie bedzie uzywany przez arduino) i stworze kilka wersji kodu w if lub switch. Dzięki czemu Arduino będzie podczas startu uruchamiało daną konfigurację.
 
 KONFIGURACJE MODUŁÓW
 --------------
