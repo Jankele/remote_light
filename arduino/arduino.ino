@@ -20,10 +20,10 @@ void setup()
 
 void loop()
 {
+  if(configuration == pr)
+    loopPR();
   if(configuration == pir)
     loopPIR();
-  if(configuration == pr)
-  loopPR();
   if(configuration == ble)
     loopBLE();
   if(configuration == pir_pr)
@@ -33,9 +33,18 @@ void loop()
   }
   if(configuration == pr_ble)
   {
+    loopPR();
+    loopBLE();
+  }
+  if(configuration == pir_ble)
   {
     loopPR();
     loopBLE();
   }
+  if(configuration == pir_pr_ble)
+  {
+    loopPR();
+    loopPIR();
+    loopBLE();
+  }
 }
-
