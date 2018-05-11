@@ -4,6 +4,8 @@ void loopPIR()
   if(licznik = 0)
   {
       if(digitalRead(PIR) == HIGH)
+      {
         ledOn(LED1);
+      }
   }
 }
