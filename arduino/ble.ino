@@ -15,7 +15,6 @@ void loopBLE()
     {
       if(Serial.available())
         znak = (byte)Serial.read();
-      delay(10);
     }
 
     switch(znak)
