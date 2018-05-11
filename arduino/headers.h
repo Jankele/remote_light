@@ -11,4 +11,14 @@
 #define ADDRESS 0
 #define INTERVAL 1000
 
+//configurations
+#define EPR 1
+#define EPIR 2
+#define EBLE 3
+#define EPIR_PR 4
+#define EPR_BLE 5
+#define EPIR_BLE 6
+#define EPIR_PR_BLE 7
+//----------
+
 #endif

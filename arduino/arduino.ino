@@ -4,27 +4,20 @@
 unsigned long previousTime;
 unsigned long currentTime;
 
-enum configurations
-{
-  EPR = 1, EPIR, EBLE, EPIR_PR, EPR_BLE, EPIR_BLE, EPIR_PR_BLE
-};
+uint8_t configuration = (uint8_t)EEPROM.read(ADDRESS);
 
 void initiateConsole();
 
 void setup()
 {
-  uint_8t configuration = (uint_8t)EEPROM.read(ADDRESS);
-  if(configuration == pir || configuration == pir_pr || configuration == pir_ble || configuration == pir_pr_ble)
-  {
-    pinMode(PIR, INPUT);
-    delay(1000); // kalibracja czujki pir
-  }
-  if(configuration == pr || configuration == pir_pr || configuration == pr_ble || configuration == pir_pr_ble)
-  {
-    pinMode(PR, INPUT);
-  }
+  pinMode(PIR, INPUT);
+  delay(1000); // kalibracja czujki pir
+
+  pinMode(PR, INPUT);
+
   initiateLED();
   initiateConsole();
+
   previousTime = millis();
 }
 
@@ -50,17 +43,36 @@ void loop()
       loopPR();
       loopPIR();
     }
-      
+    break;
+
     case EPR_BLE:
+    {
       loopPR();
       loopBLE();
+    }
     break;
+
     case EPIR_BLE:
-    loopPR();
-    loopBLE();
-    loopPR();
-    loopPIR();
-    loopBLE();
+    {
+      loopPR();
+      loopBLE();
+    }
+    break;
+
+    case EPIR_PR_BLE:
+    {
+      loopPR();
+      loopPIR();
+      loopBLE();
+    }
+    break;
+
+    default:
+    {
+      loopPR();
+      loopPIR();
+      loopBLE();
+    }
   }
   previousTime = millis();
 }
@@ -70,3 +82,5 @@ void initiateConsole()
   Serial.begin(BAUD);
   while(! Serial); //Czekanie na konsole
 }
+
+void (*functions[7](void))

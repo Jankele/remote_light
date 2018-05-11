@@ -1,4 +1,4 @@
-void loopPIR()
+void handlePIR()
 {
   if(digitalRead(PIR) == HIGH)
   {

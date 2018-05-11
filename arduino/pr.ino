@@ -1,6 +1,6 @@
 bool state = false;
 
-boolean isBright()
+bool isBright()
 {
   if(analogRead(PR) > POZIOM) //LDR < 300
     return true;
@@ -8,7 +8,7 @@ boolean isBright()
     return false;
 }
 
-void loopPR()
+void handlePR()
 {
   if(isBright())
   {

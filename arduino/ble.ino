@@ -7,7 +7,7 @@ asm volatile ("  jmp 0");
 
 
 
-void loopBLE()
+void handleBLE()
 {
     znak = (char)0;
 
