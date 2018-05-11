@@ -1,7 +1,7 @@
 #include <EEPROM.h>
 #include "headers.h"
 
-enum configurations
+typedef enum configurations
 {
   pr = 1, pir, ble, pir_pr, pr_ble, pir_ble, pir_pr_ble
 };
