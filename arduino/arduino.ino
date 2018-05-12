@@ -83,4 +83,4 @@ void initiateConsole()
   while(! Serial); //Czekanie na konsole
 }
 
-void (*functions[7](void))
+
