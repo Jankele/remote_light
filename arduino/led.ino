@@ -1,4 +1,4 @@
-void initiateLED()
+void initiateLed()
 {
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
