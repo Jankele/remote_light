@@ -1,4 +1,8 @@
-bool state = false;
+void initiatePr()
+{
+  pinMode(PR, INPUT);
+  ledState = false;
+}
 
 bool isBright()
 {
@@ -8,14 +12,14 @@ bool isBright()
     return false;
 }
 
-void handlePR()
+void handlePr()
 {
   if(isBright())
   {
     if(state == true)
     {
       ledOff(LED1);
-      state = false;
+      ledState = false;
     }
   }
   else
@@ -23,7 +27,7 @@ void handlePR()
     if(state == false)
     {
       ledOn(LED1);
-      state = true;
+      ledState = true;
     }
   }
 }
