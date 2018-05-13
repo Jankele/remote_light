@@ -1,23 +1,25 @@
-char znak;
-
 void (softReset)
 {
 asm volatile ("  jmp 0");
 }
 
-
+void initiateConsole()
+{
+  Serial.begin(BAUD);
+  while(! Serial); //Czekanie na konsole
+}
 
 void handleBLE()
 {
-    znak = (char)0;
+    serialHolder = (char)0;
 
-    while(znak == (char)0)
+    while(serialHolder == (char)0)
     {
       if(Serial.available())
-        znak = (byte)Serial.read();
+        serialHolder = (byte)Serial.read();
     }
 
-    switch(znak)
+    switch(serialHolder)
     {
       case 'a':
       {
