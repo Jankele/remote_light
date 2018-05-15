@@ -9,7 +9,6 @@
 #define PIR 8
 #define POZIOM 300
 #define ADDRESS 0
-#define INTERVAL 1000
 
 //configurations
 #define EPR 1

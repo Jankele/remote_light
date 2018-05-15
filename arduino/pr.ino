@@ -12,22 +12,22 @@ bool isBright()
     return false;
 }
 
-void handlePr()
+bool handlePr()
 {
   if(isBright())
   {
-    if(state == true)
+    if(digitalRead(LED2) == HIGH)
     {
       ledOff(LED1);
-      ledState = false;
+      return false;
     }
   }
   else
   {
-    if(state == false)
+    if(digitalRead(LED2) == LOW)
     {
-      ledOn(LED1);
-      ledState = true;
+      ledOn(LED2);
+      return true;
     }
   }
 }

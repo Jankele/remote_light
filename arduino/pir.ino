@@ -4,15 +4,15 @@ void initiatePir()
   delay(1000); // kalibracja czujki pir
 }
 
-bool handlePir()
+void handlePir()
 {
   if(digitalRead(PIR) == HIGH)
   {
     ledOn(LED1);
-    return true;
+    ledState = true;
   }
   else
   {
-    return false;
+    ledState = false;
   }
 }

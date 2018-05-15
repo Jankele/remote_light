@@ -4,8 +4,10 @@
 unsigned long previousTime;
 unsigned long currentTime;
 uint8_t configuration;
-bool ledState;
 char serialHolder;
+bool ledState;
+
+const unsigned long maxInterval = 1000;
 
 void initiateConsole();
 void initiatePr();
