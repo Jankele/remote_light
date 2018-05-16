@@ -1,3 +1,4 @@
+//TODO -review code
 #include <EEPROM.h>
 #include "headers.h"
 
