@@ -16,77 +16,79 @@ void handleBLE()
 
   switch(serialHolder)
   {
-    case 'a':
+    case 'a': //pr
     {
       if(digitalRead(LED1) == LOW)
         digitalWrite(LED1, HIGH);
     }
     break;
 
-    case 'b':
+    case 'b': //pr
     {
       if(digitalRead(LED1) == HIGH)
         digitalWrite(LED1, LOW);
     } 
     break;
     
-    case 'c':
+    case 'c': //pir
     {
       if(digitalRead(LED2) == LOW)
         digitalWrite(LED2, HIGH);
+      isBleUsed = true;
     } 
     break;
     
-    case 'd':
+    case 'd': //pir
     {
       if(digitalRead(LED2) == HIGH)
         digitalWrite(LED2, LOW);
+      isBleUsed = true;
     } 
     break;
     
-    case 'e':
+    case 'e': //ble
     {
       if(digitalRead(LED3) == LOW)
         digitalWrite(LED3, HIGH);
     } 
     break;
       
-    case 'f':
+    case 'f': //ble
     {
       if(digitalRead(LED3) == HIGH)
         digitalWrite(LED3, LOW);
     } 
     break;
     
-    case 'g':
+    case 'g': //reset
       softReset();
     break;
     
-    case 'h':
+    case 'h': //konfiguracja pr
       EEPROM.write(ADDRESS, 1);
     break;
     
-    case 'i':
+    case 'i': //konfiguracja pir
       EEPROM.write(ADDRESS, 2);
     break;
     
-    case 'j':
+    case 'j': //konfiguracja ble
       EEPROM.write(ADDRESS, 3);
     break;
     
-    case 'k':
+    case 'k': //konfiguracja pr_pir
       EEPROM.write(ADDRESS, 4);
     break;
     
-    case 'l':
+    case 'l': //konfiguracja pr_ble
       EEPROM.write(ADDRESS, 5);
     break;
     
-    case 'm':
+    case 'm': //konfiguracja pir_ble
       EEPROM.write(ADDRESS, 6);
     break;
     
-    case 'n':
+    case 'n': //konfiguracja pr_pir_ble
       EEPROM.write(ADDRESS, 7);
     break;
     }
