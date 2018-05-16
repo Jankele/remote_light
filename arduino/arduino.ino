@@ -5,7 +5,8 @@ unsigned long previousTime;
 unsigned long currentTime;
 uint8_t configuration;
 char serialHolder;
-bool ledState;
+bool isLedTurnedOn;
+bool isBleUsed;
 
 const unsigned long maxInterval = 1000;
 
@@ -18,11 +19,13 @@ void getTimer();
 void setup()
 {
   configuration = (uint8_t)EEPROM.read(ADDRESS);
-
+  isLedTurnedOn = false;
+  isBleUsed = false;
   initiatePr();
   initiatePir();
   initiateLed();
   initiateConsole();
+  previousTime = millis();
 }
 
 void loop()
