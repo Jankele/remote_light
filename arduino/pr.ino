@@ -1,7 +1,6 @@
 void initiatePr()
 {
   pinMode(PR, INPUT);
-  ledState = false;
 }
 
 bool isBright()
@@ -12,22 +11,22 @@ bool isBright()
     return false;
 }
 
-bool handlePr()
+void handlePr()
 {
   if(isBright())
   {
-    if(digitalRead(LED2) == HIGH)
+    if(digitalRead(LED1) == HIGH)
     {
       ledOff(LED1);
-      return false;
+      isLedTurnedOn = false;
     }
   }
   else
   {
-    if(digitalRead(LED2) == LOW)
+    if(digitalRead(LED1) == LOW)
     {
-      ledOn(LED2);
-      return true;
+      ledOn(LED1);
+      isLedTurnedOn = true;
     }
   }
 }
