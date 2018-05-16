@@ -1,8 +1,9 @@
+//everything to review before compilation
 //pr - done
-void loopEpir() //done?
+void loopEpir() //done
 {
   handlePir();
-  if(ledState = true)
+  if(isLedTurnedOn = true)
   {
     previousTime = millis();
   }
@@ -11,9 +12,9 @@ void loopEpir() //done?
     currentTime = millis();
     if(currentTime - previousTime > maxInterval)
     {
-      if(digitalRead(LED1) == HIGH)
+      if(digitalRead(LED2) == HIGH)
       {
-        ledOff(LED1);
+        ledOff(LED2);
       }
     }
   }
@@ -24,18 +25,28 @@ void loopEble() //done
   handleBle();
 }
 
-void loopEpir_pr() //done
+void loopEpr_pir() //done
 {
   handlePr();
   loopEpir();
 }
 
-void loopEpr_ble()
+void loopEpr_ble() //done
 {
-  previousTime = millis();
-//  currentTime = millis();
   handleBle();
-  handlePR();
+  if(isBleUsed == true)
+  {
+    currentTime = millis();
+    if(currentTime - previousTime > maxInterval)
+    {
+      isBleUsed = false;
+    }
+  }
+  else
+  {
+    handlePR();
+    previousTime = millis();
+  }
 }
 
 void loopEpir_ble()
@@ -76,7 +87,7 @@ void loopSwitch()
     case EPIR_PR:
     {
       handleConfig();
-      loopEpir_pr();
+      loopEpr_pir();
     }
     break;
 
