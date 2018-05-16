@@ -8,11 +8,11 @@ void handlePir()
 {
   if(digitalRead(PIR) == HIGH)
   {
-    ledOn(LED1);
-    ledState = true;
+    ledOn(LED2);
+    isLedTurnedOn = true;
   }
   else
   {
-    ledState = false;
+    isLedTurnedOn = false;
   }
 }
