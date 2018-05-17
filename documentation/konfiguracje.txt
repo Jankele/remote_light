@@ -45,7 +45,7 @@ VI. PIR + BLE
     Dioda wyłącza się po X czasu od zapalenia
 
   Kiedy dioda PIR jest włączona
-    Aplikacja na telefon może odświeżyć czas X przez który dioda PIR jest włączona.
+    Aplikacja na telefon może ją wyłączyć na X czasu.
   Kiedy dioda PIR jest wyłączona
     Aplikacja na telefon może ją włączyć na X czasu.
 --------------
@@ -60,7 +60,7 @@ VII. PIR + PR + BLE
     Dioda jest wyłączona dopóki jest jasno
 
   Kiedy dioda PIR jest włączona
-    Aplikacja na telefon może odświeżyć czas X przez który dioda PIR jest włączona.
+    Aplikacja na telefon może ją wyłączyć na X czasu.
   Kiedy dioda PIR jest wyłączona
     Aplikacja na telefon może ją włączyć na X czasu.
         
