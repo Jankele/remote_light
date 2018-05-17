@@ -20,6 +20,7 @@ void handleBLE()
     {
       if(digitalRead(LED1) == LOW)
         digitalWrite(LED1, HIGH);
+      isBleUsed = true;
     }
     break;
 
@@ -27,6 +28,7 @@ void handleBLE()
     {
       if(digitalRead(LED1) == HIGH)
         digitalWrite(LED1, LOW);
+      isBleUsed = true;
     } 
     break;
     

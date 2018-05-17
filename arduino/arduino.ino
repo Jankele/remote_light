@@ -4,9 +4,10 @@
 
 unsigned long previousTime;
 unsigned long currentTime;
+unsigned long previousTimePir;
+unsigned long currentTimePir;
 uint8_t configuration;
 char serialHolder;
-bool isLedTurnedOn;
 bool isBleUsed;
 
 const unsigned long maxInterval = 1000;
@@ -14,19 +15,17 @@ const unsigned long maxInterval = 1000;
 void initiateConsole();
 void initiatePr();
 void initiatePir();
-void setTimer();
-void getTimer();
 
 void setup()
 {
   configuration = (uint8_t)EEPROM.read(ADDRESS);
-  isLedTurnedOn = false;
   isBleUsed = false;
   initiatePr();
   initiatePir();
   initiateLed();
   initiateConsole();
   previousTime = millis();
+  spreviousTimePir = millis();
 }
 
 void loop()
