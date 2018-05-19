@@ -1,4 +1,4 @@
-void (softReset)
+void softReset()
 {
 asm volatile ("  jmp 0");
 }
@@ -9,7 +9,7 @@ void initiateConsole()
   while(! Serial); //Czekanie na konsole
 }
 
-void handleBLE()
+void handleBle()
 {
   if(Serial.available())
     serialHolder = (byte)Serial.read();
@@ -61,39 +61,7 @@ void handleBLE()
         digitalWrite(LED3, LOW);
     } 
     break;
-    
-    case 'g': //reset
-      softReset();
-    break;
-    
-    case 'h': //konfiguracja pr
-      EEPROM.write(ADDRESS, 1);
-    break;
-    
-    case 'i': //konfiguracja pir
-      EEPROM.write(ADDRESS, 2);
-    break;
-    
-    case 'j': //konfiguracja ble
-      EEPROM.write(ADDRESS, 3);
-    break;
-    
-    case 'k': //konfiguracja pr_pir
-      EEPROM.write(ADDRESS, 4);
-    break;
-    
-    case 'l': //konfiguracja pr_ble
-      EEPROM.write(ADDRESS, 5);
-    break;
-    
-    case 'm': //konfiguracja pir_ble
-      EEPROM.write(ADDRESS, 6);
-    break;
-    
-    case 'n': //konfiguracja pr_pir_ble
-      EEPROM.write(ADDRESS, 7);
-    break;
-    }
+  }
 }
 
 void handleConfig()
