@@ -1,4 +1,3 @@
-//TODO -review code
 #include <EEPROM.h>
 #include "config.h"
 
@@ -8,22 +7,26 @@ unsigned long previousTimePir;
 unsigned long currentTimePir;
 unsigned long previousTimePr;
 unsigned long currentTimePr;
-uint8_t configuration;
-char serialHolder;
+int configuration;
+char serialBuffer;
 bool isBleUsed;
 bool isLedTurnedOn;
-const unsigned long maxInterval = 1000;
+bool isPirUsed;
+const unsigned long maxInterval = 2000;
 
 void setup()
 {
-  configuration = (uint8_t)EEPROM.read(ADDRESS);
+  //configuration = EEPROM.read(ADDRESS);
+  configuration = 7;
   isBleUsed = false;
+  isPirUsed = false;
   initiatePr();
   initiatePir();
   initiateLed();
   initiateConsole();
   previousTime = millis();
   previousTimePir = millis();
+  serialBuffer = 'z';
 }
 
 void loop()

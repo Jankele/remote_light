@@ -5,7 +5,7 @@ void initiatePr()
 
 bool isBright()
 {
-  if(analogRead(PR) > POZIOM) //LDR < 300
+  if(analogRead(PR) > POZIOM) //LDR < 200
     return true;
   else
     return false;

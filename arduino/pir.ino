@@ -9,5 +9,10 @@ void handlePir()
   if(digitalRead(PIR) == HIGH)
   {
     ledOn(LED2);
+    isPirUsed = true;
+  }
+  else
+  {
+    isPirUsed = false;
   }
 }
