@@ -66,29 +66,48 @@ void handleBle()
         digitalWrite(LED3, LOW);
     } 
     break;
-        case 'g':
+
+    case 'g':
+    {
+      EEPROM.write(ADDRESS, 1);
       softReset();
+    }    
     break;
     case 'h':
-      EEPROM.write(ADDRESS, 1);
+    {
+      EEPROM.write(ADDRESS, 2);
+      softReset();
+    }  
     break;
     case 'i':
-      EEPROM.write(ADDRESS, 2);
+    {
+      EEPROM.write(ADDRESS, 3);
+      softReset();
+    }  
     break;
     case 'j':
-      EEPROM.write(ADDRESS, 3);
+    {
+      EEPROM.write(ADDRESS, 4);
+      softReset();
+    }  
     break;
     case 'k':
-      EEPROM.write(ADDRESS, 4);
+    {
+      EEPROM.write(ADDRESS, 5);
+      softReset();
+    }  
     break;
     case 'l':
-      EEPROM.write(ADDRESS, 5);
+    {
+      EEPROM.write(ADDRESS, 6);
+      softReset();
+    }  
     break;
     case 'm':
-      EEPROM.write(ADDRESS, 6);
-    break;
-    case 'n':
+    {
       EEPROM.write(ADDRESS, 7);
+      softReset();
+    }  
     break;
   }
 }
@@ -97,7 +116,7 @@ void handleBle()
 
 void handleConfig()
 {
-  static char serialHolder;
+  char serialHolder;
   if(Serial.available())
   {
     serialHolder = (byte)Serial.read();
@@ -107,28 +126,46 @@ void handleConfig()
   switch(serialHolder)
   {
     case 'g':
+    {
+      EEPROM.write(ADDRESS, 1);
       softReset();
+    }    
     break;
     case 'h':
-      EEPROM.write(ADDRESS, 1);
+    {
+      EEPROM.write(ADDRESS, 2);
+      softReset();
+    }  
     break;
     case 'i':
-      EEPROM.write(ADDRESS, 2);
+    {
+      EEPROM.write(ADDRESS, 3);
+      softReset();
+    }  
     break;
     case 'j':
-      EEPROM.write(ADDRESS, 3);
+    {
+      EEPROM.write(ADDRESS, 4);
+      softReset();
+    }  
     break;
     case 'k':
-      EEPROM.write(ADDRESS, 4);
+    {
+      EEPROM.write(ADDRESS, 5);
+      softReset();
+    }  
     break;
     case 'l':
-      EEPROM.write(ADDRESS, 5);
+    {
+      EEPROM.write(ADDRESS, 6);
+      softReset();
+    }  
     break;
     case 'm':
-      EEPROM.write(ADDRESS, 6);
-    break;
-    case 'n':
+    {
       EEPROM.write(ADDRESS, 7);
+      softReset();
+    }  
     break;
   }
 }

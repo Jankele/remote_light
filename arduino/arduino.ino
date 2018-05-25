@@ -1,6 +1,6 @@
 #include <EEPROM.h>
 #include "config.h"
-
+//globals
 unsigned long previousTime;
 unsigned long currentTime;
 unsigned long previousTimePir;
@@ -16,8 +16,7 @@ const unsigned long maxInterval = 2000;
 
 void setup()
 {
-  //configuration = EEPROM.read(ADDRESS);
-  configuration = 7;
+  configuration = EEPROM.read(ADDRESS);
   isBleUsed = false;
   isPirUsed = false;
   initiatePr();
