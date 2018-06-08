@@ -5,9 +5,9 @@
 #define LED2 3
 #define LED3 4
 #define BAUD 9600
-#define PR A0
+#define PR A5
 #define PIR 5
-#define POZIOM 300
+#define POZIOM 700
 #define ADDRESS 0
 
 //configurations

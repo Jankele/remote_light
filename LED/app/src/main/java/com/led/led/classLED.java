@@ -6,7 +6,6 @@ import android.bluetooth.BluetoothSocket;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.Toast; //needed for displaying alerts
-import android.widget.CompoundButton;
 import android.widget.Button;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
