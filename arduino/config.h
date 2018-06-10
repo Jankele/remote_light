@@ -7,7 +7,7 @@
 #define BAUD 9600
 #define PR A5
 #define PIR 5
-#define POZIOM 700
+#define POZIOM 200
 #define ADDRESS 0
 
 //configurations

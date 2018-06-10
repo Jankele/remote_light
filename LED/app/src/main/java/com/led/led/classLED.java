@@ -1,5 +1,6 @@
 package com.led.led;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.bluetooth.BluetoothSocket;
@@ -14,6 +15,8 @@ import android.bluetooth.BluetoothAdapter; //getting info about bluetooth adapte
 import android.bluetooth.BluetoothDevice; //getting info about bluetooth devices paired with user equipment
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.UUID;
 
 
@@ -30,6 +33,15 @@ public class classLED extends AppCompatActivity
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
     private boolean isBtConnected = false;
+
+
+
+    Handler bluetoothIn;
+    private StringBuilder recDataString = new StringBuilder();
+    final int handlerState = 0;
+    private ConnectedThread mConnectedThread;
+
+
     //SPP UUID. this standard id for serial port communication
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -77,12 +89,20 @@ public class classLED extends AppCompatActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) //startup method
+    public void onCreate(Bundle savedInstanceState) //startup method
     {
         super.onCreate(savedInstanceState);
 
         Intent newint = getIntent();
         address = newint.getStringExtra(classPairList.EXTRA_ADDRESS); //receive the address of the bluetooth device
+
+
+
+
+
+
+
+
 
         setContentView(R.layout.activity_led);
 
@@ -136,6 +156,40 @@ public class classLED extends AppCompatActivity
             }
         });
 */
+
+
+
+
+
+
+
+
+        bluetoothIn = new Handler() {
+            public void handleMessage(android.os.Message msg) {
+                if (msg.what == handlerState) {										//if message is what we want
+                    String readMessage = (String) msg.obj;                                                                // msg.arg1 = bytes from connect thread
+                    recDataString.append(readMessage);      								//keep appending to string until ~
+                    int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
+                    if (endOfLineIndex > 0) {                                           // make sure there data before ~
+                        String dataInPrint = recDataString.substring(0, endOfLineIndex);    // extract string
+                        msg(dataInPrint);
+
+                        recDataString.delete(0, recDataString.length()); 					//clear all string data
+                        // strIncom =" ";
+                        dataInPrint = " ";
+                    }
+                }
+            }
+        };
+
+
+
+
+
+
+
+
+
         btnPrOn.setOnClickListener(new View.OnClickListener() {//photoresistor led(red) ON
             @Override
             public void onClick(View v) {
@@ -185,6 +239,8 @@ public class classLED extends AppCompatActivity
 
                 //Change the activity.
                 startActivity(i);
+                mConnectedThread = new ConnectedThread(btSocket);
+                mConnectedThread.start();
             }
         });
     }
@@ -257,6 +313,41 @@ public class classLED extends AppCompatActivity
                 isBtConnected = true;
             }
             progress.dismiss();
+        }
+    }
+    //create new class for connect thread
+    private class ConnectedThread extends Thread {
+        private final InputStream mmInStream;
+
+        //creation of the connect thread
+        public ConnectedThread(BluetoothSocket socket) {
+            InputStream tmpIn = null;
+            OutputStream tmpOut = null;
+
+            try {
+                //Create I/O streams for connection
+                tmpIn = socket.getInputStream();
+            } catch (IOException e) { }
+
+            mmInStream = tmpIn;
+        }
+
+
+        public void run() {
+            byte[] buffer = new byte[256];
+            int bytes;
+
+            // Keep looping to listen for received messages
+            while (true) {
+                try {
+                    bytes = mmInStream.read(buffer);        	//read bytes from input buffer
+                    String readMessage = new String(buffer, 0, bytes);
+                    // Send the obtained bytes to the UI Activity via handler
+                    bluetoothIn.obtainMessage(handlerState, bytes, -1, readMessage).sendToTarget();
+                } catch (IOException e) {
+                    break;
+                }
+            }
         }
     }
 }
