@@ -1,11 +1,16 @@
 package com.led.led;
 
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.bluetooth.BluetoothSocket;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast; //needed for displaying alerts
 import android.widget.Button;
 import android.app.ProgressDialog;
@@ -19,31 +24,60 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import static android.R.attr.progressBarStyleLarge;
+
 
 public class classLED extends AppCompatActivity
 {
+
     //@widgets
     Switch btnS1, btnS2, btnS3;
     Button btnPrOn, btnPrOff, btnPirOn, btnPirOff, btnBleOn, btnBleOff, btnConfiguration;
-    //@variables
-    String address = null;
-    String config = null;
-    private ProgressDialog progress;
-    //@bluetooth
-    BluetoothAdapter myBluetooth = null;
-    BluetoothSocket btSocket = null;
-    private boolean isBtConnected = false;
-
-
-
     Handler bluetoothIn;
-    private StringBuilder recDataString = new StringBuilder();
-    final int handlerState = 0;
+
+    String config = null;
+    final int handlerState = 0;        				 //used to identify handler message
+    private BluetoothAdapter btAdapter = null;
+    private BluetoothSocket btSocket = null;
+    private ProgressDialog progress;
+
     private ConnectedThread mConnectedThread;
 
+    // SPP UUID service - this should work for most devices
+    private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    //SPP UUID. this standard id for serial port communication
-    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    // String for MAC address
+    private static String address;
+
+    @Override
+    protected void onNewIntent(Intent intent) { //on exit from config activity send info to arduino
+        config = intent.getStringExtra(classConfigurations.EXTRA_CONFIGURATION);
+        msg(config);
+        switch (config)
+        {
+            case "Fotorezystor":
+                mConnectedThread.write("g");
+                break;
+            case "Czujka PIR":
+                mConnectedThread.write("h");
+                break;
+            case "Moduł Bluetooth":
+                mConnectedThread.write("i");
+                break;
+            case "Fotorezystor i Czujka PIR":
+                mConnectedThread.write("j");
+                break;
+            case "Fotorezystor i Moduł Bluetooth":
+                mConnectedThread.write("k");
+                break;
+            case "Czujka PIR i Moduł Bluetooth":
+                mConnectedThread.write("l");
+                break;
+            case "Fotorezystor, Czujka PIR i Moduł Bluetooth":
+                mConnectedThread.write("m");
+                break;
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -60,175 +94,125 @@ public class classLED extends AppCompatActivity
     }
 
     @Override
-    protected void onNewIntent(Intent intent) { //on exit from config activity send info to arduino
-        config = intent.getStringExtra(classConfigurations.EXTRA_CONFIGURATION);
-        msg(config);
-        switch (config) {
-            case "Fotorezystor":
-                    sendByte("g");
-                    break;
-            case "Czujka PIR":
-                    sendByte("h");
-                    break;
-            case "Moduł Bluetooth":
-                    sendByte("i");
-                    break;
-            case "Fotorezystor i Czujka PIR":
-                    sendByte("j");
-                    break;
-            case "Fotorezystor i Moduł Bluetooth":
-                    sendByte("k");
-                    break;
-            case "Czujka PIR i Moduł Bluetooth":
-                    sendByte("l");
-                    break;
-            case "Fotorezystor, Czujka PIR i Moduł Bluetooth":
-                    sendByte("m");
-                    break;
-        }
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) //startup method
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Intent newint = getIntent();
-        address = newint.getStringExtra(classPairList.EXTRA_ADDRESS); //receive the address of the bluetooth device
-
-
-
-
-
-
-
-
 
         setContentView(R.layout.activity_led);
 
-        //call the widgtes
-       /* btnS1 = (Switch)findViewById(R.id.switch1);
-        btnS2 = (Switch)findViewById(R.id.switch2);
-        btnS3 = (Switch)findViewById(R.id.switch3);*/
-        btnPrOn = (Button) findViewById(R.id.button9);
-        btnPrOff = (Button) findViewById(R.id.button4);
-        btnPirOn = (Button) findViewById(R.id.button5);
-        btnPirOff = (Button) findViewById(R.id.button6);
-        btnBleOn = (Button) findViewById(R.id.button7);
-        btnBleOff = (Button) findViewById(R.id.button8);
-        btnConfiguration = (Button)findViewById(R.id.button2);
-
-        new ConnectBT().execute(); //Call the class to connect
-/*
-        btnS1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//photoresistor led(red)
-                if (isChecked) {
-                    sendByte("a"); //ON
-                } else {
-                    sendByte("b"); //OFF
-                }
-            }
-        });
-
-        btnS2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//pir sensor led(green)
-                if (isChecked) {
-                    sendByte("c"); //ON
-                } else {
-                    sendByte("d"); //OFF
-                }
-            }
-        });
-
-        btnS3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//bluetooth adapter led(white)
-                if (isChecked) {
-                    sendByte("e"); //ON
-                } else {
-                    sendByte("f"); //OFF
-                }
-            }
-        });
-*/
-
-
-
-
-
-
-
+        //Link the buttons and textViews to respective views
+        btnPrOn = findViewById(R.id.button9);
+        btnPrOff = findViewById(R.id.button4);
+        btnPirOn = findViewById(R.id.button5);
+        btnPirOff = findViewById(R.id.button6);
+        btnBleOn = findViewById(R.id.button7);
+        btnBleOff = findViewById(R.id.button8);
+        btnConfiguration = findViewById(R.id.button2);
+        btnS1 = findViewById(R.id.switch1);
+        btnS2 = findViewById(R.id.switch2);
+        btnS3 = findViewById(R.id.switch3);
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
                 if (msg.what == handlerState) {										//if message is what we want
-                    String readMessage = (String) msg.obj;                                                                // msg.arg1 = bytes from connect thread
-                    recDataString.append(readMessage);      								//keep appending to string until ~
-                    int endOfLineIndex = recDataString.indexOf("~");                    // determine the end-of-line
-                    if (endOfLineIndex > 0) {                                           // make sure there data before ~
-                        String dataInPrint = recDataString.substring(0, endOfLineIndex);    // extract string
-                        msg(dataInPrint);
-
-                        recDataString.delete(0, recDataString.length()); 					//clear all string data
-                        // strIncom =" ";
-                        dataInPrint = " ";
+                    String readMessage = (String) msg.obj;
+                    switch (readMessage)
+                    {
+                        case "a":
+                            msg("Dioda Czerwona została włączona");
+                            break;
+                        case "b":
+                            msg("Dioda Czerwona została wyłączona");
+                            break;
+                        case "c":
+                            msg("Dioda Zielona została włączona");
+                            break;
+                        case "d":
+                            msg("Dioda Zielona została wyłączona");
+                            break;
+                        case "e":
+                            msg("Dioda Biała została włączona");
+                            break;
+                        case "f":
+                            msg("Dioda Biała została wyłączona");
+                            break;
                     }
                 }
             }
         };
 
+//        btnS1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+//        {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//photoresistor led(red)
+//                if (isChecked) {
+//                    mConnectedThread.write("a"); //ON
+//                } else {
+//                    mConnectedThread.write("b"); //OFF
+//                }
+//            }
+//        });
+//        btnS2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+//        {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//pir sensor led(green)
+//                if (isChecked) {
+//                    mConnectedThread.write("c"); //ON
+//                } else {
+//                    mConnectedThread.write("d"); //OFF
+//                }
+//            }
+//        });
+//        btnS3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+//        {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//bluetooth adapter led(white)
+//                if (isChecked) {
+//                    mConnectedThread.write("e"); //ON
+//                } else {
+//                    mConnectedThread.write("f"); //OFF
+//                }
+//            }
+//        });
 
+        btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
+        checkBTState();
 
-
-
-
-
-
-
-        btnPrOn.setOnClickListener(new View.OnClickListener() {//photoresistor led(red) ON
-            @Override
+        btnPrOn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendByte("a");
+                mConnectedThread.write("a");
             }
         });
 
-        btnPrOff.setOnClickListener(new View.OnClickListener() {//photoresistor led(red) OFF
-            @Override
+        // Set up onClick listeners for buttons to send 1 or 0 to turn on/off LED
+        btnPrOff.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendByte("b");
+                mConnectedThread.write("b");
             }
         });
 
-        btnPirOn.setOnClickListener(new View.OnClickListener() {//pir sensor led(green) ON
-            @Override
+        btnPirOn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendByte("c");
+                mConnectedThread.write("c");    // Send "1" via Bluetooth
             }
         });
 
-        btnPirOff.setOnClickListener(new View.OnClickListener() { //pir sensor led(green) OFF
-            @Override
+        // Set up onClick listeners for buttons to send 1 or 0 to turn on/off LED
+        btnPirOff.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendByte("d");
+                mConnectedThread.write("d");    // Send "0" via Bluetooth
             }
         });
 
-        btnBleOn.setOnClickListener(new View.OnClickListener() { //bluetooth adapter led(white) ON
-            @Override
+        btnBleOn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendByte("e");
+                mConnectedThread.write("e");    // Send "1" via Bluetooth
             }
         });
 
-        btnBleOff.setOnClickListener(new View.OnClickListener() { //bluetooth adapter led(white) OFF
-            @Override
+        // Set up onClick listeners for buttons to send 1 or 0 to turn on/off LED
+        btnBleOff.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                sendByte("f");
+                mConnectedThread.write("f");    // Send "0" via Bluetooth
             }
         });
 
@@ -236,29 +220,52 @@ public class classLED extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(classLED.this, classConfigurations.class);
-
                 //Change the activity.
                 startActivity(i);
-                mConnectedThread = new ConnectedThread(btSocket);
-                mConnectedThread.start();
             }
         });
-    }
 
-    private void sendByte(String a) //this method sends byte to arduino
-    {
-        if (btSocket!=null)
+        msg("Łączenie...");
+        //Get MAC address from DeviceListActivity via intent
+        Intent intent = getIntent();
+
+        //Get the MAC address from the DeviceListActivty via EXTRA
+        address = intent.getStringExtra(classPairList.EXTRA_ADDRESS);
+
+
+
+        //create device and set the MAC address
+        BluetoothDevice device = btAdapter.getRemoteDevice(address);
+
+        try {
+            btSocket = createBluetoothSocket(device);
+        } catch (IOException e) {
+            msg("Socket creation failed");
+        }
+        // Establish the Bluetooth socket connection.
+        BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
+        try
         {
+            btSocket.connect();
+        } catch (IOException e) {
             try
             {
-                btSocket.getOutputStream().write(a.getBytes());
-            }
-            catch (IOException e)
+                btSocket.close();
+            } catch (IOException e2)
             {
-                msg("Błąd");
+                //insert code to deal with this
             }
         }
+        mConnectedThread = new ConnectedThread(btSocket);
+        mConnectedThread.start();
+
+        //I send a character when resuming.beginning transmission to check device is connected
+        //If it is not an exception will be thrown in the write method and finish() will be called
+        mConnectedThread.write("x");
+
+        msg("Połączono");
     }
+
 
     // fast way to call Toast alert
     private void msg(String s)
@@ -266,58 +273,31 @@ public class classLED extends AppCompatActivity
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
     }
 
+    private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
 
-    private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
-    {
-        private boolean ConnectSuccess = true; //if it's here, it's almost connected
+        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+        //creates secure outgoing connecetion with BT device using UUID
+    }
 
-        @Override
-        protected void onPreExecute()
-        {
-            progress = ProgressDialog.show(classLED.this, "Łączenie", "Proszę Czekać");  //show a progress dialog
-        }
 
-        @Override
-        protected Void doInBackground(Void... devices) //while the progress dialog is shown, the connection is done in background
-        {
-            try
-            {
-                if (btSocket == null || !isBtConnected)
-                {
-                    myBluetooth = BluetoothAdapter.getDefaultAdapter();//get the user equipment's bluetooth adapter
-                    BluetoothDevice dispositivo = myBluetooth.getRemoteDevice(address);//connects to the device's address and checks if it's available
-                    btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
-                    BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
-                    btSocket.connect();//start connection
-                }
-            }
-            catch (IOException e)
-            {
-                ConnectSuccess = false;//if the try failed, you can check the exception here
-            }
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void result) //after the doInBackground, it checks if everything went fine
-        {
-            super.onPostExecute(result);
+    //Checks that the Android device Bluetooth is available and prompts to be turned on if off
+    private void checkBTState() {
 
-            if (!ConnectSuccess)
-            {
-                msg("Połączenie Nieudane");
-                finish();
+        if(btAdapter==null) {
+            Toast.makeText(getBaseContext(), "Device does not support bluetooth", Toast.LENGTH_LONG).show();
+        } else {
+            if (btAdapter.isEnabled()) {
+            } else {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, 1);
             }
-            else
-            {
-                msg("Połączono");
-                isBtConnected = true;
-            }
-            progress.dismiss();
         }
     }
+
     //create new class for connect thread
     private class ConnectedThread extends Thread {
         private final InputStream mmInStream;
+        private final OutputStream mmOutStream;
 
         //creation of the connect thread
         public ConnectedThread(BluetoothSocket socket) {
@@ -327,9 +307,11 @@ public class classLED extends AppCompatActivity
             try {
                 //Create I/O streams for connection
                 tmpIn = socket.getInputStream();
+                tmpOut = socket.getOutputStream();
             } catch (IOException e) { }
 
             mmInStream = tmpIn;
+            mmOutStream = tmpOut;
         }
 
 
@@ -347,6 +329,18 @@ public class classLED extends AppCompatActivity
                 } catch (IOException e) {
                     break;
                 }
+            }
+        }
+        //write method
+        public void write(String input) {
+            byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
+            try {
+                mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
+            } catch (IOException e) {
+                //if you cannot write, close the application
+                Toast.makeText(getBaseContext(), "Connection Failure", Toast.LENGTH_LONG).show();
+                finish();
+
             }
         }
     }

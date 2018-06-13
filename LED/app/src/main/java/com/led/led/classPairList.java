@@ -18,7 +18,7 @@ import java.util.Set;
 public class classPairList extends AppCompatActivity
 {
     // @widgets
-    Button buttonRefresh;
+
     ListView pairList;
     // @bluetooth
     private BluetoothAdapter myBluetooth = null;
@@ -26,12 +26,18 @@ public class classPairList extends AppCompatActivity
     public static String EXTRA_ADDRESS = "address";
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        pairedDevicesList();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) //startup method
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pair_list);
         //call the widgtes
-        buttonRefresh = (Button)findViewById(R.id.button);
+
         pairList = (ListView)findViewById(R.id.listView);
 
         myBluetooth = BluetoothAdapter.getDefaultAdapter(); //assign bluetooth adapter from user equipment to variable
@@ -42,14 +48,6 @@ public class classPairList extends AppCompatActivity
             startActivityForResult(i,1);
         }
 
-        buttonRefresh.setOnClickListener(new View.OnClickListener()
-        { //show list of bluetooth devices paired with user equipment
-            @Override
-            public void onClick(View v)
-            {
-                pairedDevicesList();
-            }
-        });
     }
 
     private void pairedDevicesList() //create list of bluetooth devices paired with user equipment

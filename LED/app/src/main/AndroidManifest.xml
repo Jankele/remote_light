@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".classLED" android:screenOrientation="portrait"></activity>
-        <activity android:name=".classConfigurations" android:screenOrientation="portrait"></activity>
+        <activity android:name=".classConfigurations" android:screenOrientation="portrait" android:noHistory="true"></activity>
     </application>
 
 </manifest>
