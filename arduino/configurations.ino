@@ -12,6 +12,7 @@ void loopEpir()
     {
       if(digitalRead(LED2) == HIGH)
       {
+        Serial.print("d");
         ledOff(LED2);
       }
     }

@@ -1,20 +1,14 @@
 package com.led.led;
 
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.bluetooth.BluetoothSocket;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast; //needed for displaying alerts
 import android.widget.Button;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.content.Intent; //moving between activities
 import android.bluetooth.BluetoothAdapter; //getting info about bluetooth adapter installed on user equipment
 import android.bluetooth.BluetoothDevice; //getting info about bluetooth devices paired with user equipment
@@ -24,33 +18,27 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-import static android.R.attr.progressBarStyleLarge;
-
-
 public class classLED extends AppCompatActivity
 {
 
     //@widgets
     Switch btnS1, btnS2, btnS3;
-    Button btnPrOn, btnPrOff, btnPirOn, btnPirOff, btnBleOn, btnBleOff, btnConfiguration;
+    Button btnConfiguration;
     Handler bluetoothIn;
-
+    //@bluetooth
     String config = null;
-    final int handlerState = 0;        				 //used to identify handler message
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
-    private ProgressDialog progress;
-
     private ConnectedThread mConnectedThread;
-
+    //used to identify handler message
+    final int handlerState = 0;
+    private boolean toSwitch = true;
     // SPP UUID service - this should work for most devices
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    // String for MAC address
-    private static String address;
-
+    //on exit from config activity send info to arduino
     @Override
-    protected void onNewIntent(Intent intent) { //on exit from config activity send info to arduino
+    protected void onNewIntent(Intent intent) {
         config = intent.getStringExtra(classConfigurations.EXTRA_CONFIGURATION);
         msg(config);
         switch (config)
@@ -99,13 +87,6 @@ public class classLED extends AppCompatActivity
 
         setContentView(R.layout.activity_led);
 
-        //Link the buttons and textViews to respective views
-        btnPrOn = findViewById(R.id.button9);
-        btnPrOff = findViewById(R.id.button4);
-        btnPirOn = findViewById(R.id.button5);
-        btnPirOff = findViewById(R.id.button6);
-        btnBleOn = findViewById(R.id.button7);
-        btnBleOff = findViewById(R.id.button8);
         btnConfiguration = findViewById(R.id.button2);
         btnS1 = findViewById(R.id.switch1);
         btnS2 = findViewById(R.id.switch2);
@@ -113,108 +94,73 @@ public class classLED extends AppCompatActivity
 
         bluetoothIn = new Handler() {
             public void handleMessage(android.os.Message msg) {
-                if (msg.what == handlerState) {										//if message is what we want
-                    String readMessage = (String) msg.obj;
-                    switch (readMessage)
+                    switch ((String) msg.obj)
                     {
                         case "a":
-                            msg("Dioda Czerwona została włączona");
+                            toSwitch = false;
+                            btnS1.setChecked(true);
                             break;
                         case "b":
-                            msg("Dioda Czerwona została wyłączona");
+                            toSwitch = false;
+                            btnS1.setChecked(false);
                             break;
                         case "c":
-                            msg("Dioda Zielona została włączona");
+                            toSwitch = false;
+                            btnS2.setChecked(true);
                             break;
                         case "d":
-                            msg("Dioda Zielona została wyłączona");
-                            break;
-                        case "e":
-                            msg("Dioda Biała została włączona");
-                            break;
-                        case "f":
-                            msg("Dioda Biała została wyłączona");
+                            toSwitch = false;
+                            btnS2.setChecked(false);
                             break;
                     }
                 }
-            }
         };
 
-//        btnS1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-//        {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//photoresistor led(red)
-//                if (isChecked) {
-//                    mConnectedThread.write("a"); //ON
-//                } else {
-//                    mConnectedThread.write("b"); //OFF
-//                }
-//            }
-//        });
-//        btnS2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-//        {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//pir sensor led(green)
-//                if (isChecked) {
-//                    mConnectedThread.write("c"); //ON
-//                } else {
-//                    mConnectedThread.write("d"); //OFF
-//                }
-//            }
-//        });
-//        btnS3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-//        {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//bluetooth adapter led(white)
-//                if (isChecked) {
-//                    mConnectedThread.write("e"); //ON
-//                } else {
-//                    mConnectedThread.write("f"); //OFF
-//                }
-//            }
-//        });
+        btnS1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//photoresistor led(red)
+                if(toSwitch) {
+                    if (isChecked) {
+                        mConnectedThread.write("a"); //ON
+                    } else {
+                        mConnectedThread.write("b"); //OFF
+                    }
+                }
+                toSwitch = true;
+            }
+        });
+        btnS2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//pir sensor led(green)
+                if (toSwitch) {
+                    if (isChecked) {
+                        mConnectedThread.write("c"); //ON
+                    } else {
+                        mConnectedThread.write("d"); //OFF
+                    }
+                }
+                toSwitch = true;
+            }
+        });
+        btnS3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {//bluetooth adapter led(white)
+                if(toSwitch) {
+                    if (isChecked) {
+                        mConnectedThread.write("e"); //ON
+                    } else {
+                        mConnectedThread.write("f"); //OFF
+                    }
+                }
+                toSwitch = true;
+            }
+        });
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();       // get Bluetooth adapter
         checkBTState();
-
-        btnPrOn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mConnectedThread.write("a");
-            }
-        });
-
-        // Set up onClick listeners for buttons to send 1 or 0 to turn on/off LED
-        btnPrOff.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mConnectedThread.write("b");
-            }
-        });
-
-        btnPirOn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mConnectedThread.write("c");    // Send "1" via Bluetooth
-            }
-        });
-
-        // Set up onClick listeners for buttons to send 1 or 0 to turn on/off LED
-        btnPirOff.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mConnectedThread.write("d");    // Send "0" via Bluetooth
-            }
-        });
-
-        btnBleOn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mConnectedThread.write("e");    // Send "1" via Bluetooth
-            }
-        });
-
-        // Set up onClick listeners for buttons to send 1 or 0 to turn on/off LED
-        btnBleOff.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mConnectedThread.write("f");    // Send "0" via Bluetooth
-            }
-        });
 
         btnConfiguration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,6 +175,8 @@ public class classLED extends AppCompatActivity
         //Get MAC address from DeviceListActivity via intent
         Intent intent = getIntent();
 
+        // String for MAC address
+        String address;
         //Get the MAC address from the DeviceListActivty via EXTRA
         address = intent.getStringExtra(classPairList.EXTRA_ADDRESS);
 
@@ -248,12 +196,10 @@ public class classLED extends AppCompatActivity
         {
             btSocket.connect();
         } catch (IOException e) {
-            try
-            {
+            try {
                 btSocket.close();
-            } catch (IOException e2)
-            {
-                //insert code to deal with this
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         }
         mConnectedThread = new ConnectedThread(btSocket);

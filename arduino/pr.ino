@@ -5,7 +5,7 @@ void initiatePr()
 
 bool isBright()
 {
-  if(analogRead(PR) > POZIOM) //LDR < 200
+  if(analogRead(PR) > POZIOM)
     return true;
   else
     return false;
@@ -17,6 +17,7 @@ void handlePr()
   {
     if(digitalRead(LED1) == HIGH)
     {
+      Serial.print("b");
       ledOff(LED1);
       isLedTurnedOn = false;
     }
@@ -25,6 +26,7 @@ void handlePr()
   {
     if(digitalRead(LED1) == LOW)
     {
+      Serial.print("a");
       ledOn(LED1);
       isLedTurnedOn = true;
     }

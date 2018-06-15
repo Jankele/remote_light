@@ -6,7 +6,7 @@ asm volatile ("  jmp 0");
 void initiateConsole()
 {
   Serial.begin(BAUD);
-  while(! Serial); //Czekanie na konsole
+  while(! Serial);
 }
 
 void handleBle()
@@ -24,10 +24,7 @@ void handleBle()
     case 'a': //pr
     {
       if(digitalRead(LED1) == LOW)
-      {
         digitalWrite(LED1, HIGH);
-        Serial.print("a");
-      }
       isBleUsed = true;
     }
     break;
@@ -35,10 +32,7 @@ void handleBle()
     case 'b': //pr
     {
       if(digitalRead(LED1) == HIGH)
-      {
         digitalWrite(LED1, LOW);
-        Serial.print("b");
-      }
       isBleUsed = true;
     } 
     break;
@@ -46,10 +40,7 @@ void handleBle()
     case 'c': //pir
     {
       if(digitalRead(LED2) == LOW)
-      {
         digitalWrite(LED2, HIGH);
-        Serial.print("c");
-      }
       isBleUsed = true;
     } 
     break;
@@ -57,10 +48,7 @@ void handleBle()
     case 'd': //pir
     {
       if(digitalRead(LED2) == HIGH)
-      {
         digitalWrite(LED2, LOW);
-        Serial.print("d");
-      }
       isBleUsed = true;
     } 
     break;
@@ -68,20 +56,14 @@ void handleBle()
     case 'e': //ble
     {
       if(digitalRead(LED3) == LOW)
-      {
         digitalWrite(LED3, HIGH);
-        Serial.print("e");
-      }
     } 
     break;
       
     case 'f': //ble
     {
       if(digitalRead(LED3) == HIGH)
-      {
         digitalWrite(LED3, LOW);
-        Serial.print("f");
-      }
     } 
     break;
 
