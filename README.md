@@ -1,44 +1,38 @@
-# System do inteligentnego sterowania oświetleniem w domu
+# Remote household lighting control system
 
 
+## Project requirements
 
-## Wymagania projektowe
+### Functional requirements:
+* Wireless lighting control (via Bluetooth and Android app)
+* Movement detection
+* Control via twilight sensor
 
-### Wymagania funkcjonalne:
-* Możliwość zdalnego sterowania oświetleniem (bezprzewodowo)
-* Możliwość wykrywania użytkownika i zapalania oświetlenia z wykorzystaniem czujnika
-* Możliwość automatycznego zapalania oświetlenia po zmierzchu z wykorzystaniem czujnika
-* Możliwość zapalania i gaszenia oświetlenia za pomocą sekwencji dźwiękowej z wykorzystaniem czujnika (opcjonalnie)
-
-### Wymagania niefunkcjonalne:
-* Arduino
-* Moduł do komunikacji bezprzewodowej Bluetooth
-* Czujnik światła
-* Czujnik ruchu PIR (Domyślnie na wyjściu LOW, zmiana na HIGH podczas wykrycia ruchu)
-* Diody led (symulacja oświetlenia w domu)
-* Czujnik dźwięku (opcjonalnie)
-* Płytka prototypowa lub drukowana łącząca wszystkie moduły
-* Arduino IDE lub inne środowisko kompatybilne z systemami operacyjnymi Windows lub Linux
+### Non-functional requirements:
+* Arduino board with EEPROM memory
+* HC-05 Bluetooth module
+* Twilight sensor
+* PIR sensor (Default output = LOW)
+* LED (Real lighting simulation)
+* Breadboard
+* Arduino IDE or similar
 * Spis potrzebnych komponentów:
 
-| Komponent | Ilość | PIN |
+| Component | Quantity | PIN No |
 | :--- | :---: | :--- |
 | Arduino | 1 | 
-| Moduł Bluetooth | 1 | Digital |
-| Płytka stykowa 830 | 1 |
-| Dioda LED | 3 | Digital |
-| Opornik 220Ω | 3 |
-| Opornik 1kΩ | 1 |
-| Opornik 2kΩ | 1 |
-| Opornik 10kΩ | 1 |
-| Czujka PIR | 1 | Digital |
-| Fotorezystor | 1 | Analog |
-| Opcjonalnie: |
-| Czujnik dźwięku | 1 | Analog |
+| Bluetooth Module | 1 | Digital |
+| Breadboard | 1 |
+| LED | 3 | Digital |
+| 220Ω Resistor | 3 |
+| 1kΩ Resistor | 1 |
+| 2kΩ Resistor | 1 |
+| 10kΩ Resistor | 1 |
+| PIR Sensor | 1 | Digital |
+| Photoresistor | 1 | Analog |
 
 
+## Blueprints
 
-## Schemat projektu
-
-### Prototyp v1.0
-![schemat projektu Fritzing](https://github.com/Jankele/remote_light/blob/master/src/schemat.png?raw=true)
+### Prototype (not optimised)
+![Fritzing blueprint](https://github.com/Jankele/remote_light/blob/master/src/schemat.png?raw=true)
